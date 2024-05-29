@@ -1,0 +1,44 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.display{
+    width: 125px;
+    /* height: 35px; */
+    padding: 30px;
+    border-style: dotted;   
+    text-align: center; 
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+}
+.subcontainer{
+    display: flex;
+    gap: 20px;
+
+    
+}
+.operator-buttons{
+    display: flex;
+    gap:20px;
+    
+    
+    
+}
+
+button{
+
+    width: 50px;
+
+}
+
+
