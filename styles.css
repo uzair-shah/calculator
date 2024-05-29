@@ -29,16 +29,13 @@ body{
 }
 .operator-buttons{
     display: flex;
-    gap:20px;
-    
-    
-    
+    gap:20px; 
 }
 
 button{
-
     width: 50px;
-
 }
+
+
 
 

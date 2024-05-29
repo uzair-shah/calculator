@@ -24,6 +24,10 @@ const operatorButtons = document.querySelectorAll('.operator-buttons');
 const numberButtons = document.querySelectorAll('.number-button');
 
 
+// Variables to store values
+let firstNumber = '' ;
+let secondNumber = '';
+let operator ;
 
 // Creating functions for basic operations
 const add = function(a,b) {
@@ -50,26 +54,28 @@ const divide = function(a,b) {
 	return a / b;
 };
 
-let firstNumber = '' ;
-let secondNumber = '';
-let operator ;
-
+// Using functions and numbers based on prompt 
 function operate(a,operator,b){
+    if (operator == "/" && b == '0'){
+        alert("Don't be stupid, stupid!")
+    }
+    else{
+        switch(operator) {
+            case '+':
+                return add(a,b)
+                break;
+            case '-':
+                return subtract(a,b);
+                break;
+            case 'x':
+                return multiply(a,b);
+            case '/':
+                return divide(a,b)
+            default:
+                return 'Please add valid operator';
+            };
+    }
     
-    switch(operator) {
-        case '+':
-            return add(a,b)
-            break;
-        case '-':
-            return subtract(a,b);
-            break;
-        case 'x':
-            return multiply(a,b);
-        case '/':
-            return divide(a,b)
-        default:
-            return 'Please add valid operator';
-      };
 };
 
 // When the user presses a number, the following code runs
@@ -90,32 +96,30 @@ numberButtons.forEach((button) => {
     });
 });
 
-
+// When the user presses an operator, the following code runs
 operatorButtons.forEach((button) => {
     // and for each one we add a 'click' listener
     button.addEventListener("click", function(e){
         if (!(e.target.id == 'equals' || e.target.id == 'clear')){
             operator = e.target.textContent.trim();
             display.textContent += operator;
-            
         }
-        
-        // display.textContent = e.target.textContent;
-        
     });
 });
 
+// Pressing equals to button to run functions and display result 
 equalsButton = document.querySelector('#equals')
 equalsButton.addEventListener('click', function(e){
     let answer = operate(firstNumber,operator,secondNumber);
     display.textContent = answer.toFixed(2);
-    // resetting the operator 
+    // resetting the operator and storing the result as the first value
     operator = null;
     firstNumber = answer;
     secondNumber = ''
 
 })
 
+// Clearing existing variables and operators
 clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', function(e){
     display.textContent = '';
